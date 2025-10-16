@@ -9,7 +9,7 @@ function App() {
     <>
       <NavigationBar />
       <Hero />
-      <Plants />
+      
     </>
   )
 }

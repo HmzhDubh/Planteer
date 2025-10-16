@@ -29,14 +29,15 @@ function Plants() {
                         <h2 className='text-3xl font-semibold'>Plants</h2>
                         <p className='text-sm text-gray-500'>Press to learn More about our plants</p>
                     </div>
-                    <button onClick={toggleAllPlants} className=''>View All Plants<i></i></button>
+                    <button onClick={toggleAllPlants} className=''>{viewAllPlants ? "View Less" :"View More"}<i></i></button>
                 </div>
                 <div id='plants' className='grid grid-cols-3 mt-6 gap-12'>
                     {plantsItems && plantsItems.slice(0,3).map((item, index) => (
-                        <button onClick={() => handleToggleDetails(index)} key={index} className='rounded-lg flex flex-col gap-1 text-left'>
+                        <div key={index} className='rounded-lg flex flex-col gap-1 text-left'>
                             <img className='rounded-lg max-w-lg' src={item.imageUrl} alt={item.name}/>
-                            {item.isViewed && <PlantDetails plant={item}/>}
-                        </button>
+                            {item.isViewed && (<PlantDetails plant={item}/>)}
+                            <button onClick={() => handleToggleDetails(index)}>{item.name}{item.isViewed ? ' ^ ' : ' V ' }</button>
+                        </div>
                     ))}
                 </div>
                 {viewAllPlants && <AllPlants />}
