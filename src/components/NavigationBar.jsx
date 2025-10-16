@@ -1,6 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 function NavigationBar() {
+  const cart = useSelector( (state) => state.cart )
   return (
     
 <nav className="relative bg-white">
@@ -31,7 +33,7 @@ function NavigationBar() {
             <a href="#" className="px-3 py-2 text-sm font-medium hover:font-bold">Home</a>
             <a href="#" className="px-3 py-2 text-sm font-medium hover:font-bold">Plants</a>
             <a href="#" className="px-3 py-2 text-sm font-medium hover:font-bold">Contact</a>
-            <button href="#" className="rounded-md bg-black hover:bg-green-900 hover:text-black text-white px-3 py-2 text-sm font-medium">🛒 <span className='bg-red-800 p-1 rounded-full'>{3}</span></button>
+            <button href="#" className="rounded-md bg-black hover:bg-green-900 hover:text-black text-white px-3 py-2 text-sm font-medium">🛒 <span className='bg-red-800 p-1 rounded-full'>{cart.length > 0 ? cart[0].quantity : 0}</span></button>
           </div>
         </div>
       </div>
